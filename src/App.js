@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { PilotForm } from "./components/PilotForm/PilotForm";
+import { Pilots } from "./components/Pilots/Pilots";
+import { TournamentForm } from "./components/TournamentForm/TournamentForm";
+import { Tournaments } from "./components/Tournaments/Tournaments";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PilotForm />
+      <Pilots />
+      <TournamentForm />
+      <Tournaments />
     </div>
   );
 }
