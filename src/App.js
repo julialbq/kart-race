@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { api } from "./api/api";
+import "./App.css";
+import { PilotForm } from "./components/PilotForm/PilotForm";
+import { Pilots } from "./components/Pilots/Pilots";
+import { TournamentForm } from "./components/TournamentForm/TournamentForm";
+import { Tournaments } from "./components/Tournaments/Tournaments";
 
 function App() {
+  const [pilots, setPilots] = useState([]);
+
+  const fetchPilots = () => {
+    fetch(`${api}/racers/`)
+      .then((response) => response.json())
+      .then((response) => setPilots(response))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchPilots();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PilotForm fetchPilots={fetchPilots} />
+      <Pilots pilots={pilots} />
+      <TournamentForm />
+      <Tournaments />
     </div>
   );
 }
