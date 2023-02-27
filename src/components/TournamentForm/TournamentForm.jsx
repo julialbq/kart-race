@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../../api/api";
 
-export const TournamentForm = () => {
+export const TournamentForm = ({fetchTournaments}) => {
   const [tournament, setTournament] = useState("");
 
   const handleSubmit = (event) => {
@@ -17,11 +17,13 @@ export const TournamentForm = () => {
       }),
     })
       .then((response) => response.json())
-      .cacth((error) => console.log(error));
+      .then(() => fetchTournaments())
+      .catch((error) => console.log(error));
   };
 
   return (
     <div>
+      <h2>Register a tournament</h2>
       <form onSubmit={handleSubmit} >
         <label name="tournament">
           Tournament:

@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <PilotForm fetchPilots={fetchPilots} />
       <Pilots pilots={pilots} />
-      <TournamentForm />
+      <TournamentForm fetchTournaments={fetchTournaments} />
       <Tournaments tournaments={tournaments} />
     </div>
   );
