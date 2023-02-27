@@ -7,7 +7,7 @@ import { Tournaments } from "./components/Tournaments/Tournaments";
 function App() {
   return (
     <div className="App">
-      <PilotForm />
+      <PilotForm fetchPilots={fetchPilots} />
       <Pilots />
       <TournamentForm />
       <Tournaments />
