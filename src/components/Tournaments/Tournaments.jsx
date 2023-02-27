@@ -1,23 +1,14 @@
-import { useEffect, useState } from "react";
-import { api } from "../../api/api";
 import { Tournament } from "../Tournament/Tournament";
 
-export const Tournaments = () => {
-  const [tournaments, setTournaments] = useState([]);
- 
-
-  useEffect(() => {
-    fetch(`${api}/tournaments/`)
-      .then((response) => response.json())
-      .then((response) => setTournaments(...tournaments, response))
-      .catch((error) => console.log(error));
-  }, []);
-
+export const Tournaments = ({ tournaments }) => {
   return (
-    <ul>
-      {tournaments.map((tournament) => (
-        <Tournament key={tournament.id} tournament={tournament} />
-      ))}
-    </ul>
+    <div>
+      <h2>Tournaments</h2>
+      <ul>
+        {tournaments.map((tournament) => (
+          <Tournament key={tournament.id} tournament={tournament} />
+        ))}
+      </ul>
+    </div>
   );
 };
