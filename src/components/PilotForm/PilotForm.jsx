@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../../api/api";
 
-export const PilotForm = () => {
+export const PilotForm = ({fetchPilots}) => {
   const [name, setName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [picture, setPicture] = useState("");
@@ -21,7 +21,8 @@ export const PilotForm = () => {
       }),
     })
       .then((response) => response.json())
-      .cacth((error) => console.log(error));
+      .then(() => fetchPilots())
+      .catch((error) => console.log(error));
   };
 
   return (
